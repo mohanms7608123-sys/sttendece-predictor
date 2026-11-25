@@ -37,6 +37,14 @@ app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
+// Ensure /api prefix compatibility on serverless platforms (e.g. Vercel)
+app.use((req, res, next) => {
+  if (!req.url.startsWith('/api') && !req.url.startsWith('/uploads') && !req.url.startsWith('/socket.io')) {
+    req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
+  }
+  next();
+});
+
 // Static directory for uploaded images
 const uploadPath = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(uploadPath));
