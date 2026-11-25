@@ -13,6 +13,12 @@ function getHeaders() {
 }
 
 async function handleResponse<T>(res: Response): Promise<T> {
+  const contentType = res.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(
+      'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend, or configure a proxy redirect.'
+    );
+  }
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.message || 'An error occurred while processing the request.');

@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
@@ -106,6 +107,18 @@ app.get('/api/push/vapid-key', (req, res) => {
   res.json({ vapidPublicKey: 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgD zk8zL0T99k9iYwU303c7W1uXn0Q2Zc74' });
 });
 
+// Serve Frontend build in production / single-service deployments
+const distPath = path.join(process.cwd(), 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/uploads') && !req.path.startsWith('/socket.io')) {
+      return res.sendFile(path.join(distPath, 'index.html'));
+    }
+    next();
+  });
+}
+
 // Start server
 const PORT = process.env.PORT || 5000;
 
@@ -126,6 +139,10 @@ async function start() {
   });
 }
 
-start();
+// Only listen on port when not running as a serverless function (e.g. Vercel)
+if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  start();
+}
 
+export default app;
 export { app, server };
