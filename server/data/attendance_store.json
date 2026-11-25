@@ -1,0 +1,915 @@
+{
+  "super_admins": [
+    {
+      "_id": "sa_01",
+      "adminId": "SA-001",
+      "username": "superadmin",
+      "fullName": "System Super Administrator",
+      "email": "superadmin@attendance.gov",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZeVDzsSmVjfMgE1slYSWKovUi8sysavvC",
+      "role": "super_admin",
+      "status": "active",
+      "lastLogin": "2026-11-25T20:00:29.256Z",
+      "registrationDate": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-11-25T20:00:29.257Z"
+    }
+  ],
+  "colleges": [
+    {
+      "_id": "col_01",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "collegeEmail": "contact@apex.edu",
+      "collegeAddress": "42 Academic Avenue, Tech District, CA",
+      "contactNumber": "+1 (555) 234-5678",
+      "collegeSecretCode": "APEX2026",
+      "status": "active",
+      "registrationDate": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "_id": "col_02",
+      "collegeId": "COL-102",
+      "collegeName": "Metro Global University",
+      "collegeEmail": "info@metro.edu",
+      "collegeAddress": "100 University Plaza, Metro City, NY",
+      "contactNumber": "+1 (555) 876-5432",
+      "collegeSecretCode": "METRO2026",
+      "status": "active",
+      "registrationDate": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795634249462_81l5e5",
+      "createdAt": "2026-11-25T19:17:29.462Z",
+      "collegeId": "1001",
+      "collegeName": "nps univercity",
+      "collegeEmail": "mohanms7608123@gmail.com",
+      "collegeAddress": "Machohalli magadi main road bengaluru",
+      "contactNumber": "+917483709597",
+      "collegeSecretCode": "MCA2026",
+      "status": "active",
+      "registrationDate": "2026-11-25T19:17:29.462Z"
+    }
+  ],
+  "admins": [
+    {
+      "_id": "adm_01",
+      "adminId": "ADM-101",
+      "fullName": "Dr. Robert Chen",
+      "username": "robert_chen",
+      "email": "admin@apex.edu",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZeVDzsSmVjfMgE1slYSWKovUi8sysavvC",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "collegeSecretCode": "APEX2026",
+      "role": "college_admin",
+      "status": "active",
+      "lastLogin": "2026-11-25T20:00:29.359Z",
+      "registrationDate": "2026-01-12T00:00:00.000Z",
+      "updatedAt": "2026-11-25T20:00:29.359Z"
+    },
+    {
+      "_id": "adm_02",
+      "adminId": "ADM-102",
+      "fullName": "Prof. Sarah Jenkins",
+      "username": "sarah_jenkins",
+      "email": "admin@metro.edu",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZeVDzsSmVjfMgE1slYSWKovUi8sysavvC",
+      "collegeId": "COL-102",
+      "collegeName": "Metro Global University",
+      "collegeSecretCode": "METRO2026",
+      "role": "college_admin",
+      "status": "active",
+      "lastLogin": "2026-11-25T18:41:10.057Z",
+      "registrationDate": "2026-01-16T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795634492414_xgdbw1",
+      "createdAt": "2026-11-25T19:21:32.414Z",
+      "adminId": "ADM-327",
+      "fullName": "manasa",
+      "username": "manasa",
+      "email": "manasa@gmail.com",
+      "password": "$2b$10$RZyvEBYPqapY8fJFifrsB.rHWMn8Vs55c5KTmkqv13p3nHadhGAFO",
+      "collegeId": "1001",
+      "collegeName": "nps univercity",
+      "collegeSecretCode": "MCA2026",
+      "role": "college_admin",
+      "status": "active",
+      "lastLogin": "2026-11-25T19:21:32.414Z",
+      "registrationDate": "2026-11-25T19:21:32.414Z"
+    }
+  ],
+  "subjects": [
+    {
+      "_id": "sub_01",
+      "subjectId": "CS-101",
+      "subjectName": "Data Structures & Algorithms",
+      "collegeId": "COL-101",
+      "plannedClasses": 60,
+      "classesConducted": 42,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-101",
+      "createdAt": "2026-01-20T00:00:00.000Z",
+      "updatedAt": "2026-11-25T20:00:29.473Z"
+    },
+    {
+      "_id": "sub_02",
+      "subjectId": "CS-102",
+      "subjectName": "Database Management Systems",
+      "collegeId": "COL-101",
+      "plannedClasses": 50,
+      "classesConducted": 36,
+      "minimumAttendance": 80,
+      "status": "active",
+      "createdBy": "ADM-101",
+      "createdAt": "2026-01-20T00:00:00.000Z"
+    },
+    {
+      "_id": "sub_03",
+      "subjectId": "CS-103",
+      "subjectName": "Operating Systems",
+      "collegeId": "COL-101",
+      "plannedClasses": 55,
+      "classesConducted": 38,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-101",
+      "createdAt": "2026-01-20T00:00:00.000Z"
+    },
+    {
+      "_id": "sub_04",
+      "subjectId": "CS-104",
+      "subjectName": "Artificial Intelligence & ML",
+      "collegeId": "COL-101",
+      "plannedClasses": 60,
+      "classesConducted": 42,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-101",
+      "createdAt": "2026-01-20T00:00:00.000Z"
+    },
+    {
+      "_id": "sub_05",
+      "subjectId": "MTH-201",
+      "subjectName": "Linear Algebra & Probability",
+      "collegeId": "COL-102",
+      "plannedClasses": 60,
+      "classesConducted": 35,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-102",
+      "createdAt": "2026-01-22T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795634981317_otc4uq",
+      "createdAt": "2026-11-25T19:29:41.317Z",
+      "subjectId": "26MCAGL101",
+      "subjectName": "python programing",
+      "collegeId": "1001",
+      "plannedClasses": 60,
+      "classesConducted": 25,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-327"
+    },
+    {
+      "_id": "id_1795635045658_fvwqrp",
+      "createdAt": "2026-11-25T19:30:45.658Z",
+      "subjectId": "26MCAGL102",
+      "subjectName": "discrect structres and statistical analysis",
+      "collegeId": "1001",
+      "plannedClasses": 60,
+      "classesConducted": 0,
+      "minimumAttendance": 75,
+      "status": "active",
+      "createdBy": "ADM-327"
+    }
+  ],
+  "students": [
+    {
+      "_id": "stu_01",
+      "studentId": "STU-1001",
+      "fullName": "Alex Rivera",
+      "username": "alex_rivera",
+      "email": "alex@apex.edu",
+      "phone": "+1 (555) 123-9988",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZejWVLUL4q/uC.dWfx3k/f0M5HqX.CWoK",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "collegeSecretCode": "APEX2026",
+      "role": "student",
+      "status": "active",
+      "lastLogin": "2026-11-25T20:00:29.458Z",
+      "registrationDate": "2026-01-25T00:00:00.000Z",
+      "updatedAt": "2026-11-25T20:00:29.458Z"
+    },
+    {
+      "_id": "stu_02",
+      "studentId": "STU-1002",
+      "fullName": "Priya Sharma",
+      "username": "priya_sharma",
+      "email": "priya@apex.edu",
+      "phone": "+1 (555) 456-1122",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZejWVLUL4q/uC.dWfx3k/f0M5HqX.CWoK",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "collegeSecretCode": "APEX2026",
+      "role": "student",
+      "status": "active",
+      "lastLogin": "2026-11-25T18:41:10.057Z",
+      "registrationDate": "2026-01-26T00:00:00.000Z"
+    },
+    {
+      "_id": "stu_03",
+      "studentId": "STU-1003",
+      "fullName": "Marcus Lee",
+      "username": "marcus_lee",
+      "email": "marcus@apex.edu",
+      "phone": "+1 (555) 789-3344",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZejWVLUL4q/uC.dWfx3k/f0M5HqX.CWoK",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "collegeSecretCode": "APEX2026",
+      "role": "student",
+      "status": "active",
+      "lastLogin": "2026-11-25T18:41:10.057Z",
+      "registrationDate": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "_id": "stu_04",
+      "studentId": "STU-2001",
+      "fullName": "Ananya Patel",
+      "username": "ananya_patel",
+      "email": "ananya@metro.edu",
+      "phone": "+1 (555) 678-5544",
+      "password": "$2b$10$aYrFH.iPDG6o7giCw785ZejWVLUL4q/uC.dWfx3k/f0M5HqX.CWoK",
+      "collegeId": "COL-102",
+      "collegeName": "Metro Global University",
+      "collegeSecretCode": "METRO2026",
+      "role": "student",
+      "status": "active",
+      "lastLogin": "2026-11-25T18:41:10.057Z",
+      "registrationDate": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795634330621_tedzfl",
+      "createdAt": "2026-11-25T19:18:50.621Z",
+      "studentId": "STU-3649",
+      "fullName": "Mohan MS Ms",
+      "username": "mohanms7608123",
+      "email": "mohanms7608123@gmail.com",
+      "phone": "7483709597",
+      "password": "$2b$10$dUDdR8MGIIVrHLJlyoqmSOPX8dWRrcd4he/oSnWOowPH7FyZ3K4pm",
+      "collegeId": "1001",
+      "collegeName": "nps univercity",
+      "collegeSecretCode": "MCA2026",
+      "role": "student",
+      "status": "active",
+      "lastLogin": "2026-11-25T19:31:56.271Z",
+      "registrationDate": "2026-11-25T19:18:50.621Z",
+      "updatedAt": "2026-11-25T19:31:56.271Z"
+    }
+  ],
+  "attendance": [
+    {
+      "_id": "att_01",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "subjectId": "CS-101",
+      "subjectName": "Data Structures & Algorithms",
+      "collegeId": "COL-101",
+      "classesAttended": 38,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_02",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "subjectId": "CS-102",
+      "subjectName": "Database Management Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 33,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_03",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "subjectId": "CS-103",
+      "subjectName": "Operating Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 35,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_04",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "subjectId": "CS-104",
+      "subjectName": "Artificial Intelligence & ML",
+      "collegeId": "COL-101",
+      "classesAttended": 39,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_05",
+      "studentId": "STU-1002",
+      "studentName": "Priya Sharma",
+      "subjectId": "CS-101",
+      "subjectName": "Data Structures & Algorithms",
+      "collegeId": "COL-101",
+      "classesAttended": 27,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_06",
+      "studentId": "STU-1002",
+      "studentName": "Priya Sharma",
+      "subjectId": "CS-102",
+      "subjectName": "Database Management Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 30,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_07",
+      "studentId": "STU-1002",
+      "studentName": "Priya Sharma",
+      "subjectId": "CS-103",
+      "subjectName": "Operating Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 32,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_08",
+      "studentId": "STU-1002",
+      "studentName": "Priya Sharma",
+      "subjectId": "CS-104",
+      "subjectName": "Artificial Intelligence & ML",
+      "collegeId": "COL-101",
+      "classesAttended": 35,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_09",
+      "studentId": "STU-1003",
+      "studentName": "Marcus Lee",
+      "subjectId": "CS-101",
+      "subjectName": "Data Structures & Algorithms",
+      "collegeId": "COL-101",
+      "classesAttended": 26,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_10",
+      "studentId": "STU-1003",
+      "studentName": "Marcus Lee",
+      "subjectId": "CS-102",
+      "subjectName": "Database Management Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 22,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_11",
+      "studentId": "STU-1003",
+      "studentName": "Marcus Lee",
+      "subjectId": "CS-103",
+      "subjectName": "Operating Systems",
+      "collegeId": "COL-101",
+      "classesAttended": 28,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_12",
+      "studentId": "STU-1003",
+      "studentName": "Marcus Lee",
+      "subjectId": "CS-104",
+      "subjectName": "Artificial Intelligence & ML",
+      "collegeId": "COL-101",
+      "classesAttended": 34,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "att_13",
+      "studentId": "STU-2001",
+      "studentName": "Ananya Patel",
+      "subjectId": "MTH-201",
+      "subjectName": "Linear Algebra & Probability",
+      "collegeId": "COL-102",
+      "classesAttended": 31,
+      "lastUpdated": "2026-11-25T18:41:10.057Z"
+    },
+    {
+      "_id": "id_1795634981320_k24umh",
+      "createdAt": "2026-11-25T19:29:41.320Z",
+      "studentId": "STU-3649",
+      "studentName": "Mohan MS Ms",
+      "subjectId": "26MCAGL101",
+      "subjectName": "python programing",
+      "collegeId": "1001",
+      "classesAttended": 20,
+      "lastUpdated": "2026-11-25T19:57:18.068Z",
+      "updatedAt": "2026-11-25T19:57:18.068Z"
+    },
+    {
+      "_id": "id_1795635045662_w2cxa6",
+      "createdAt": "2026-11-25T19:30:45.662Z",
+      "studentId": "STU-3649",
+      "studentName": "Mohan MS Ms",
+      "subjectId": "26MCAGL102",
+      "subjectName": "discrect structres and statistical analysis",
+      "collegeId": "1001",
+      "classesAttended": 0,
+      "lastUpdated": "2026-11-25T19:46:46.319Z",
+      "updatedAt": "2026-11-25T19:46:46.319Z"
+    }
+  ],
+  "complaints": [
+    {
+      "_id": "cmp_01",
+      "complaintId": "CMP-1001",
+      "studentId": "STU-1002",
+      "studentName": "Priya Sharma",
+      "studentEmail": "priya@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Medical Leave Attendance Discrepancy in DSA",
+      "description": "I was hospitalized for viral fever from Feb 10 to Feb 14 and submitted my medical certificate. Two classes were not marked as excused attendance.",
+      "status": "In Progress",
+      "adminResponse": "Medical certificate received and verified with health center. Updating records with course instructor.",
+      "respondedAt": "2026-02-18T00:00:00.000Z",
+      "respondedBy": "Dr. Robert Chen",
+      "submissionDate": "2026-02-15T00:00:00.000Z"
+    },
+    {
+      "_id": "cmp_02",
+      "complaintId": "CMP-1002",
+      "studentId": "STU-1003",
+      "studentName": "Marcus Lee",
+      "studentEmail": "marcus@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Need guidance for DBMS Unreachable attendance target",
+      "description": "Due to family emergency I missed classes and my target is marked as unreachable. Can I apply for remedial sessions or extra assignment credits?",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-02-20T00:00:00.000Z"
+    },
+    {
+      "_id": "cmp_03",
+      "complaintId": "CMP-1003",
+      "studentId": "STU-2001",
+      "studentName": "Ananya Patel",
+      "studentEmail": "ananya@metro.edu",
+      "collegeId": "COL-102",
+      "collegeName": "Metro Global University",
+      "title": "Attendance synchronization delay after lab class",
+      "description": "Lab class on Tuesday was not reflected in the conducted count immediately.",
+      "status": "Resolved",
+      "adminResponse": "Lab attendance synced successfully. Your overall percentage is updated.",
+      "respondedAt": "2026-02-12T00:00:00.000Z",
+      "respondedBy": "Prof. Sarah Jenkins",
+      "submissionDate": "2026-02-10T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795633208265_2obhfd",
+      "createdAt": "2026-11-25T19:00:08.265Z",
+      "complaintId": "CMP-4965",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "studentEmail": "alex@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Lab Attendance Missing In Semester",
+      "description": "Lab attendance for week 4 was not registered.",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-11-25T19:00:08.265Z"
+    },
+    {
+      "_id": "id_1795633626036_uczal1",
+      "createdAt": "2026-11-25T19:07:06.036Z",
+      "complaintId": "CMP-3194",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "studentEmail": "alex@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Lab Attendance Missing In Semester",
+      "description": "Lab attendance for week 4 was not registered.",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-11-25T19:07:06.036Z"
+    },
+    {
+      "_id": "id_1795634400394_41wgyz",
+      "createdAt": "2026-11-25T19:20:00.394Z",
+      "complaintId": "CMP-5834",
+      "studentId": "STU-3649",
+      "studentName": "Mohan MS Ms",
+      "studentEmail": "mohanms7608123@gmail.com",
+      "collegeId": "1001",
+      "collegeName": "nps univercity",
+      "title": "i need to change ccr",
+      "description": "she  have lot of attitude",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-11-25T19:20:00.394Z"
+    },
+    {
+      "_id": "id_1795636829481_1pf4h6",
+      "createdAt": "2026-11-25T20:00:29.481Z",
+      "complaintId": "CMP-4671",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "studentEmail": "alex@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Lab Attendance Missing In Semester",
+      "description": "Lab attendance for week 4 was not registered.",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-11-25T20:00:29.480Z"
+    }
+  ],
+  "activity_logs": [
+    {
+      "_id": "act_01",
+      "action": "COLLEGE_REGISTERED",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "Apex Institute of Technology (COL-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "code": "APEX2026"
+      },
+      "timestamp": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "_id": "act_02",
+      "action": "COLLEGE_ADMIN_REGISTERED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Dr. Robert Chen",
+      "collegeId": "COL-101",
+      "details": {
+        "adminId": "ADM-101"
+      },
+      "timestamp": "2026-01-12T00:00:00.000Z"
+    },
+    {
+      "_id": "act_03",
+      "action": "SUBJECT_CREATED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Data Structures & Algorithms (CS-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "planned": 60,
+        "minAttendance": 75
+      },
+      "timestamp": "2026-01-20T00:00:00.000Z"
+    },
+    {
+      "_id": "act_04",
+      "action": "STUDENT_REGISTERED",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "Alex Rivera (STU-1001)",
+      "collegeId": "COL-101",
+      "details": {
+        "collegeCode": "APEX2026"
+      },
+      "timestamp": "2026-01-25T00:00:00.000Z"
+    },
+    {
+      "_id": "id_1795633153187_bekk4a",
+      "createdAt": "2026-11-25T18:59:13.187Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-25T18:59:13.187Z"
+    },
+    {
+      "_id": "id_1795633153261_b6kmw9",
+      "createdAt": "2026-11-25T18:59:13.261Z",
+      "action": "COLLEGE_ADMIN_LOGIN",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "ADM-101",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T18:59:13.261Z"
+    },
+    {
+      "_id": "id_1795633153340_anzrcz",
+      "createdAt": "2026-11-25T18:59:13.340Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "STU-1001",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T18:59:13.340Z"
+    },
+    {
+      "_id": "id_1795633208101_utqiwg",
+      "createdAt": "2026-11-25T19:00:08.101Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-25T19:00:08.101Z"
+    },
+    {
+      "_id": "id_1795633208173_t88mam",
+      "createdAt": "2026-11-25T19:00:08.173Z",
+      "action": "COLLEGE_ADMIN_LOGIN",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "ADM-101",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T19:00:08.173Z"
+    },
+    {
+      "_id": "id_1795633208245_h7r1zt",
+      "createdAt": "2026-11-25T19:00:08.245Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "STU-1001",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T19:00:08.245Z"
+    },
+    {
+      "_id": "id_1795633208260_b2z1dx",
+      "createdAt": "2026-11-25T19:00:08.260Z",
+      "action": "SUBJECT_UPDATED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Data Structures & Algorithms (CS-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "classesConducted": 42
+      },
+      "timestamp": "2026-11-25T19:00:08.260Z"
+    },
+    {
+      "_id": "id_1795633208266_g8e08b",
+      "createdAt": "2026-11-25T19:00:08.266Z",
+      "action": "COMPLAINT_SUBMITTED",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "CMP-4965",
+      "collegeId": "COL-101",
+      "details": {
+        "title": "Lab Attendance Missing In Semester"
+      },
+      "timestamp": "2026-11-25T19:00:08.266Z"
+    },
+    {
+      "_id": "id_1795633625878_ksigj4",
+      "createdAt": "2026-11-25T19:07:05.878Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-25T19:07:05.878Z"
+    },
+    {
+      "_id": "id_1795633625950_nvurse",
+      "createdAt": "2026-11-25T19:07:05.950Z",
+      "action": "COLLEGE_ADMIN_LOGIN",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "ADM-101",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T19:07:05.950Z"
+    },
+    {
+      "_id": "id_1795633626021_mbuija",
+      "createdAt": "2026-11-25T19:07:06.021Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "STU-1001",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T19:07:06.021Z"
+    },
+    {
+      "_id": "id_1795633626032_bi602v",
+      "createdAt": "2026-11-25T19:07:06.032Z",
+      "action": "SUBJECT_UPDATED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Data Structures & Algorithms (CS-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "classesConducted": 42
+      },
+      "timestamp": "2026-11-25T19:07:06.032Z"
+    },
+    {
+      "_id": "id_1795633626036_hbxvy3",
+      "createdAt": "2026-11-25T19:07:06.036Z",
+      "action": "COMPLAINT_SUBMITTED",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "CMP-3194",
+      "collegeId": "COL-101",
+      "details": {
+        "title": "Lab Attendance Missing In Semester"
+      },
+      "timestamp": "2026-11-25T19:07:06.036Z"
+    },
+    {
+      "_id": "id_1795634124859_qxtgqv",
+      "createdAt": "2026-11-25T19:15:24.860Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-25T19:15:24.859Z"
+    },
+    {
+      "_id": "id_1795634249464_bk3ke1",
+      "createdAt": "2026-11-25T19:17:29.464Z",
+      "action": "COLLEGE_CREATED",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "nps univercity (1001)",
+      "collegeId": "1001",
+      "details": {
+        "secretCode": "MCA2026"
+      },
+      "timestamp": "2026-11-25T19:17:29.464Z"
+    },
+    {
+      "_id": "id_1795634330623_368dab",
+      "createdAt": "2026-11-25T19:18:50.623Z",
+      "action": "STUDENT_REGISTERED",
+      "performedBy": "mohanms7608123@gmail.com",
+      "role": "student",
+      "target": "Mohan MS Ms (STU-3649)",
+      "collegeId": "1001",
+      "details": {
+        "collegeCode": "MCA2026",
+        "assignedSubjects": 0
+      },
+      "timestamp": "2026-11-25T19:18:50.623Z"
+    },
+    {
+      "_id": "id_1795634400396_jywi9f",
+      "createdAt": "2026-11-25T19:20:00.396Z",
+      "action": "COMPLAINT_SUBMITTED",
+      "performedBy": "mohanms7608123@gmail.com",
+      "role": "student",
+      "target": "CMP-5834",
+      "collegeId": "1001",
+      "details": {
+        "title": "i need to change ccr"
+      },
+      "timestamp": "2026-11-25T19:20:00.396Z"
+    },
+    {
+      "_id": "id_1795634492415_g2h7jv",
+      "createdAt": "2026-11-25T19:21:32.415Z",
+      "action": "COLLEGE_ADMIN_REGISTERED",
+      "performedBy": "manasa@gmail.com",
+      "role": "college_admin",
+      "target": "manasa",
+      "collegeId": "1001",
+      "details": {
+        "collegeName": "nps univercity",
+        "secretCode": "MCA2026"
+      },
+      "timestamp": "2026-11-25T19:21:32.415Z"
+    },
+    {
+      "_id": "id_1795634981322_19rmjj",
+      "createdAt": "2026-11-25T19:29:41.322Z",
+      "action": "SUBJECT_CREATED",
+      "performedBy": "manasa@gmail.com",
+      "role": "college_admin",
+      "target": "python programing (26MCAGL101)",
+      "collegeId": "1001",
+      "details": {
+        "plannedClasses": 60,
+        "classesConducted": 25,
+        "minimumAttendance": 75
+      },
+      "timestamp": "2026-11-25T19:29:41.322Z"
+    },
+    {
+      "_id": "id_1795635045664_ytt3lr",
+      "createdAt": "2026-11-25T19:30:45.664Z",
+      "action": "SUBJECT_CREATED",
+      "performedBy": "manasa@gmail.com",
+      "role": "college_admin",
+      "target": "discrect structres and statistical analysis (26MCAGL102)",
+      "collegeId": "1001",
+      "details": {
+        "plannedClasses": 60,
+        "classesConducted": 0,
+        "minimumAttendance": 75
+      },
+      "timestamp": "2026-11-25T19:30:45.664Z"
+    },
+    {
+      "_id": "id_1795635116272_qbn7xj",
+      "createdAt": "2026-11-25T19:31:56.273Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "mohanms7608123@gmail.com",
+      "role": "student",
+      "target": "STU-3649",
+      "collegeId": "1001",
+      "details": {},
+      "timestamp": "2026-11-25T19:31:56.272Z"
+    },
+    {
+      "_id": "id_1795636829259_16xchw",
+      "createdAt": "2026-11-25T20:00:29.259Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-25T20:00:29.258Z"
+    },
+    {
+      "_id": "id_1795636829360_udgumw",
+      "createdAt": "2026-11-25T20:00:29.360Z",
+      "action": "COLLEGE_ADMIN_LOGIN",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "ADM-101",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T20:00:29.360Z"
+    },
+    {
+      "_id": "id_1795636829460_1e133j",
+      "createdAt": "2026-11-25T20:00:29.460Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "STU-1001",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-25T20:00:29.460Z"
+    },
+    {
+      "_id": "id_1795636829475_3kox2h",
+      "createdAt": "2026-11-25T20:00:29.475Z",
+      "action": "SUBJECT_UPDATED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Data Structures & Algorithms (CS-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "classesConducted": 42
+      },
+      "timestamp": "2026-11-25T20:00:29.475Z"
+    },
+    {
+      "_id": "id_1795636829481_hl4do6",
+      "createdAt": "2026-11-25T20:00:29.481Z",
+      "action": "COMPLAINT_SUBMITTED",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "CMP-4671",
+      "collegeId": "COL-101",
+      "details": {
+        "title": "Lab Attendance Missing In Semester"
+      },
+      "timestamp": "2026-11-25T20:00:29.481Z"
+    }
+  ]
+}

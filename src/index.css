@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* CampusBite Premium International Food-Tech Palette (Light) */
+    /* 1. Deep Emerald Green – #064E3B -> 164 86% 16% */
+    /* 2. Fresh Green – #10B981 -> 159 84% 39% */
+    /* 3. Warm Cream – #FFFDF5 -> 48 100% 98% */
+    /* 4. Soft Sage – #D1FAE5 -> 152 76% 90% */
+    /* 5. Champagne Gold – #D4AF37 -> 46 65% 52% */
+    /* 6. Charcoal Black – #1F2937 -> 215 28% 17% */
+    /* 7. Pure White – #FFFFFF -> 0 0% 100% */
+    /* 8. Light Grey – #F3F4F6 -> 210 20% 96% */
+
+    --background: 48 100% 98%; /* Warm Cream #FFFDF5 */
+    --foreground: 215 28% 17%; /* Charcoal Black #1F2937 */
+
+    --card: 0 0% 100%; /* Pure White #FFFFFF */
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    --primary: 164 86% 16%; /* Deep Emerald Green #064E3B */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 152 76% 90%; /* Soft Sage #D1FAE5 */
+    --secondary-foreground: 164 86% 16%; /* Deep Emerald */
+
+    --muted: 210 20% 96%; /* Light Grey #F3F4F6 */
+    --muted-foreground: 215 16% 45%;
+
+    --accent: 46 65% 52%; /* Champagne Gold #D4AF37 */
+    --accent-foreground: 215 28% 17%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 18% 90%;
+    --input: 210 18% 90%;
+    --ring: 159 84% 39%; /* Fresh Green #10B981 */
+
+    --radius: 1rem;
+
+    --success: 159 84% 39%; /* Fresh Green #10B981 */
+    --success-foreground: 0 0% 100%;
+
+    --warning: 46 65% 52%; /* Champagne Gold */
+    --warning-foreground: 215 28% 17%;
+
+    --info: 195 80% 38%;
+    --info-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --status-placed: 215 28% 35%;
+    --status-accepted: 195 80% 38%;
+    --status-preparing: 46 65% 52%;
+    --status-ready: 159 84% 39%;
+    --status-collected: 164 86% 16%;
+    --status-cancelled: 0 72% 51%;
+
+    /* Sidebar Variables */
+    --sidebar-background: 164 86% 14%;
+    --sidebar-foreground: 48 100% 98%;
+    --sidebar-primary: 159 84% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 164 70% 20%;
+    --sidebar-accent-foreground: 152 76% 90%;
+    --sidebar-border: 164 70% 20%;
+    --sidebar-ring: 159 84% 39%;
+  }
+
+  .dark {
+    /* Charcoal Black Dark Mode Palette */
+    --background: 215 28% 17%; /* Charcoal Black #1F2937 */
+    --foreground: 48 100% 98%; /* Warm Cream */
+
+    --card: 217 33% 13%; /* Dark elevated surface */
+    --card-foreground: 48 100% 98%;
+
+    --popover: 217 33% 13%;
+    --popover-foreground: 48 100% 98%;
+
+    --primary: 159 84% 42%; /* Fresh Green in Dark Mode */
+    --primary-foreground: 215 28% 17%;
+
+    --secondary: 164 86% 16%; /* Deep Emerald */
+    --secondary-foreground: 152 76% 90%; /* Soft Sage */
+
+    --muted: 215 25% 22%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 46 65% 52%; /* Champagne Gold */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 25% 24%;
+    --input: 215 25% 24%;
+    --ring: 159 84% 45%;
+
+    --success: 159 84% 42%;
+    --success-foreground: 215 28% 17%;
+
+    --warning: 46 65% 52%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 195 80% 45%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 217 33% 11%;
+    --sidebar-foreground: 48 100% 98%;
+    --sidebar-primary: 159 84% 42%;
+    --sidebar-primary-foreground: 215 28% 17%;
+    --sidebar-accent: 215 25% 20%;
+    --sidebar-accent-foreground: 152 76% 90%;
+    --sidebar-border: 215 25% 22%;
+    --sidebar-ring: 159 84% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Custom Smooth Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(6, 78, 59, 0.2);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 78, 59, 0.35);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  /* Premium Food Card Styling */
+  .z-card {
+    @apply bg-card rounded-2xl overflow-hidden border border-border/60 shadow-[0_4px_20px_-4px_rgba(6,78,59,0.08)] relative transition-all duration-300;
+  }
+
+  .z-pill {
+    @apply bg-secondary/80 backdrop-blur-sm text-secondary-foreground px-3.5 py-1.5 rounded-full text-xs font-semibold border border-primary/10 active:scale-95 transition-all shadow-sm;
+  }
+
+  .z-search {
+    @apply bg-card border border-border/80 rounded-2xl text-foreground placeholder:text-muted-foreground h-12 shadow-sm focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  .luxury-glass {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(209, 250, 229, 0.6);
+  }
+
+  .luxury-glass-dark {
+    background: rgba(31, 41, 55, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 45%, #10B981 100%);
+  }
+
+  .gradient-fresh {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  .gradient-emerald {
+    background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #E6C65C 50%, #B89020 100%);
+  }
+
+  .gradient-cream {
+    background: linear-gradient(180deg, #FFFDF5 0%, #F3F4F6 100%);
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    background-size: 200% 100%;
+  }
+
+  .mask-receipt {
+    mask-image: radial-gradient(circle at bottom, transparent 6px, black 6px);
+    mask-size: 20px 100%;
+    mask-position: bottom;
+    mask-repeat: repeat-x;
+    padding-bottom: 8px;
+  }
+}

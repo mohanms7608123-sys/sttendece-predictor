@@ -1,0 +1,282 @@
+{
+  "menu_items": [
+    {
+      "id": "4ee04e89-2345-4fb4-8eb3-64fd4efa0712",
+      "name": "Vanilla Milkshake",
+      "price": 60,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443464755-ii0kbf.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Cold Beverages",
+      "created_at": "2026-10-08T06:49:06.415683+00:00"
+    },
+    {
+      "id": "f1a7c041-893f-40c0-ab28-ce1734900dff",
+      "name": "Butterscotch",
+      "price": 70,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443607939-ajdsdl.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Cold Beverages",
+      "created_at": "2026-10-08T07:13:30.035556+00:00"
+    },
+    {
+      "id": "27b88eca-c5f4-4e63-a1a4-d57f4310755d",
+      "name": "Pista Milkshake",
+      "price": 70,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443412348-mf0byl.png",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Cold Beverages",
+      "created_at": "2026-10-08T06:49:41.939388+00:00"
+    },
+    {
+      "id": "11546f0c-339c-4f3f-a264-d261be81b8cd",
+      "name": "Strawberry Milkshake",
+      "price": 70,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443434616-ymluhi.png",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Cold Beverages",
+      "created_at": "2026-10-08T06:49:17.90642+00:00"
+    },
+    {
+      "id": "169465cf-d188-4476-a6cd-77769fc1c734",
+      "name": "Lemonade",
+      "price": 40,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443957526-pd2x5.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Cold Beverages",
+      "created_at": "2026-10-08T07:19:23.392185+00:00"
+    },
+    {
+      "id": "0cd07aec-953c-4084-9ded-2768cdb58a66",
+      "name": "Dosa",
+      "price": 45,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791403350316-6zyz1g.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Veg",
+      "created_at": "2026-01-05T06:25:45.932441+00:00"
+    },
+    {
+      "id": "408f6340-0bea-4a98-a93e-843c09af18de",
+      "name": "Idli",
+      "price": 40,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791403376497-4ueiyd.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Veg",
+      "created_at": "2026-01-05T06:26:04.991513+00:00"
+    },
+    {
+      "id": "d7350548-80cc-44e2-b6ec-2e9e8acaaa4f",
+      "name": "Veg Palav",
+      "price": 50,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791403410439-8861o.jpg",
+      "prep_time": 5,
+      "is_available": true,
+      "category": "Veg",
+      "created_at": "2026-01-05T06:25:23.332386+00:00"
+    },
+    {
+      "id": "18e4b58f-f4bb-434d-81a3-e64ccd37c15a",
+      "name": "Boiled Egg",
+      "price": 15,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443982696-em96l.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Snacks",
+      "created_at": "2026-10-08T06:40:19.928977+00:00"
+    },
+    {
+      "id": "dc6e2db6-3785-4855-aea5-ff082571eb07",
+      "name": "Egg Rice",
+      "price": 80,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791444068185-60tm9c.jpg",
+      "prep_time": 15,
+      "is_available": true,
+      "category": "Main Course",
+      "created_at": "2026-10-08T06:39:46.750276+00:00"
+    },
+    {
+      "id": "4841cf6d-1621-4f1c-b979-995030405de2",
+      "name": "Coffee",
+      "price": 14,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791442294872-2qbdmg.jpg",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Beverages",
+      "created_at": "2026-10-08T06:47:34.289143+00:00"
+    },
+    {
+      "id": "ba36f93a-3b53-4010-ad59-ed2295d031cd",
+      "name": "Campus bite",
+      "price": 0,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1790616499764-nwf15.png",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Owner",
+      "created_at": "2026-01-03T19:46:33.544732+00:00"
+    },
+    {
+      "id": "032c0cef-42c8-48c7-a01c-ac12fc8d05c5",
+      "name": "Vada",
+      "price": 20,
+      "image_url": null,
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Veg",
+      "created_at": "2026-10-08T06:50:24.160432+00:00"
+    },
+    {
+      "id": "3ec31c4d-5111-45c0-ab16-17de630edf9b",
+      "name": "Tea",
+      "price": 15,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791442553820-hoaxsj.webp",
+      "prep_time": 10,
+      "is_available": true,
+      "category": "Beverages",
+      "created_at": "2026-10-08T06:47:20.882072+00:00"
+    },
+    {
+      "id": "87bc7f7e-bd71-40da-950c-ca641459fae1",
+      "name": "Mushroom Biriyani",
+      "price": 110,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791442831679-m9kh3.jpg",
+      "prep_time": 15,
+      "is_available": true,
+      "category": "Main Course",
+      "created_at": "2026-10-08T06:59:04.544274+00:00"
+    },
+    {
+      "id": "8e707af1-ee52-422f-adba-ab32b1b47de2",
+      "name": "Chicken Fried Rice",
+      "price": 130,
+      "image_url": "https://gsbnwpyngcocuukkiaxz.supabase.co/storage/v1/object/public/menu-images/menu-items/1791443033479-xmtfd7.jpg",
+      "prep_time": 15,
+      "is_available": true,
+      "category": "Main Course",
+      "created_at": "2026-10-08T06:39:27.568182+00:00"
+    }
+  ],
+  "time_slots": [
+    {
+      "id": "d0e73e95-fb07-4a27-a005-fb67ab994d92",
+      "start_time": "12:30:00",
+      "end_time": "14:30:00",
+      "max_orders": 1000,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-01-03"
+    },
+    {
+      "id": "aebcc1d6-63d3-4012-97fe-c9a2bd5bd42d",
+      "start_time": "12:30:00",
+      "end_time": "14:30:00",
+      "max_orders": 200,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-01-05"
+    },
+    {
+      "id": "9bb18cf3-fe82-47f3-a0c3-21380d6c31a3",
+      "start_time": "12:30:00",
+      "end_time": "14:30:00",
+      "max_orders": 200,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-01-11"
+    },
+    {
+      "id": "2e0b8791-ebbc-4b00-8ada-84db78771344",
+      "start_time": "10:15:00",
+      "end_time": "11:10:00",
+      "max_orders": 50,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-10-07"
+    },
+    {
+      "id": "6cb1188b-9fe3-4572-8ae5-bc592d8c487f",
+      "start_time": "00:30:00",
+      "end_time": "01:45:00",
+      "max_orders": 50,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-10-07"
+    },
+    {
+      "id": "216645ca-a9d0-4c5b-9d9e-3cf3fb5da5bc",
+      "start_time": "12:30:00",
+      "end_time": "01:30:00",
+      "max_orders": 50,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-10-08"
+    },
+    {
+      "id": "eac953a9-1df7-4a62-8e98-cf9a6272ee6c",
+      "start_time": "10:15:00",
+      "end_time": "11:15:00",
+      "max_orders": 50,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-10-08"
+    },
+    {
+      "id": "dd4f3b96-ddff-44a5-ac26-d3532b8194c0",
+      "start_time": "13:00:00",
+      "end_time": "14:30:00",
+      "max_orders": 2000,
+      "current_orders": 0,
+      "is_active": true,
+      "slot_date": "2026-10-15"
+    }
+  ],
+  "system_settings": [
+    {
+      "key": "last_token_reset_date",
+      "value": "2026-10-15",
+      "updated_at": "2026-01-03T16:54:57.437208+00:00"
+    },
+    {
+      "key": "daily_token_counter",
+      "value": "2",
+      "updated_at": "2026-01-03T16:54:57.437208+00:00"
+    },
+    {
+      "key": "ordering_enabled",
+      "value": "true",
+      "updated_at": "2026-10-15T08:08:31.248+00:00"
+    },
+    {
+      "key": "canteen_name",
+      "value": "East West Institute Campus Canteen",
+      "updated_at": "2026-10-07T19:57:02.09+00:00"
+    },
+    {
+      "key": "emergency_notice",
+      "value": "Please order before 15 minutes to get earlier",
+      "updated_at": "2026-10-08T06:38:27.397+00:00"
+    }
+  ],
+  "profiles": [],
+  "user_roles": [],
+  "orders": [],
+  "order_items": [],
+  "ratings": [
+    {
+      "id": "fb211406-0f5a-467d-98cb-285e6c2186e4",
+      "user_id": "58fe5eb4-1dc7-4fca-b616-edccf5c6c0f0",
+      "menu_item_id": "ba36f93a-3b53-4010-ad59-ed2295d031cd",
+      "rating": 4,
+      "created_at": "2026-01-04T11:38:01.652201+00:00",
+      "updated_at": "2026-01-04T11:38:01.652201+00:00"
+    }
+  ],
+  "audit_logs": [],
+  "payments": [],
+  "push_subscriptions": []
+}
