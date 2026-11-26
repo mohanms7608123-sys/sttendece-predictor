@@ -54,8 +54,11 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Ensure /api prefix compatibility on serverless platforms (e.g. Vercel)
+// Ensure /api prefix compatibility on serverless platforms (e.g. Vercel, Netlify)
 app.use((req, res, next) => {
+  if (req.url.startsWith('/.netlify/functions/api')) {
+    req.url = req.url.replace('/.netlify/functions/api', '/api');
+  }
   if (!req.url.startsWith('/api') && !req.url.startsWith('/uploads') && !req.url.startsWith('/socket.io')) {
     req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
   }
@@ -169,8 +172,8 @@ async function start() {
   });
 }
 
-// Only listen on port when not running as a serverless function (e.g. Vercel)
-if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+// Only listen on port when not running as a serverless function (e.g. Vercel, Netlify, AWS Lambda)
+if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME && !process.env.NETLIFY) {
   start();
 }
 
