@@ -21,20 +21,47 @@ function getHeaders() {
 
 async function handleResponse<T>(res: Response): Promise<T> {
   const contentType = res.headers.get('content-type') || '';
-  if (!contentType.includes('application/json')) {
-    const text = await res.text();
-    if (text.includes('<!DOCTYPE') || text.includes('<html')) {
+  const rawText = await res.text();
+
+  let data: any = null;
+  const isJsonCandidate =
+    contentType.includes('application/json') ||
+    (rawText.trim().startsWith('{') && rawText.trim().endsWith('}')) ||
+    (rawText.trim().startsWith('[') && rawText.trim().endsWith(']'));
+
+  if (isJsonCandidate) {
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      data = null;
+    }
+  }
+
+  if (!res.ok) {
+    if (data && (data.message || data.error)) {
+      throw new Error(data.message || data.error);
+    }
+    if (
+      rawText.includes('<!DOCTYPE') ||
+      rawText.includes('<html') ||
+      rawText.includes('The page could not be found') ||
+      rawText.includes('NOT_FOUND')
+    ) {
       throw new Error(
-        'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend (e.g. https://your-backend.onrender.com) in Netlify Site Configuration.'
+        `Backend API service is unreachable (${res.status} ${res.statusText || 'Not Found'}). The hosting platform returned an HTML page instead of API data. Please check your Vercel deployment configuration or configure VITE_API_URL to point to your active backend.`
       );
     }
-    throw new Error(`Server returned non-JSON response (${res.status} ${res.statusText})`);
+    const cleanSnippet = rawText.replace(/<[^>]*>?/gm, '').trim().slice(0, 150);
+    throw new Error(cleanSnippet || `Request failed with status ${res.status} (${res.statusText})`);
   }
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.message || 'An error occurred while processing the request.');
+
+  if (data === null) {
+    throw new Error(
+      `Invalid server response (${res.status}). Expected JSON but received: ${rawText.slice(0, 80)}`
+    );
   }
-  return data;
+
+  return data as T;
 }
 
 export const attendanceApi = {

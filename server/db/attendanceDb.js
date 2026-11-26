@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import bcrypt from 'bcryptjs';
 import { getMongoConnectionStatus } from '../config/db.js';
 import {
@@ -15,6 +16,7 @@ import {
 
 const isServerless = !!(process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 const BUNDLED_DATA_FILE = path.join(process.cwd(), 'server', 'data', 'attendance_store.json');
+const MODULE_DATA_FILE = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'data', 'attendance_store.json');
 const WRITABLE_DATA_DIR = isServerless ? '/tmp' : path.join(process.cwd(), 'server', 'data');
 const WRITABLE_DATA_FILE = path.join(WRITABLE_DATA_DIR, 'attendance_store.json');
 
@@ -46,13 +48,16 @@ function loadEmbeddedData() {
   }
 
   // 2. Try reading from bundled file (server/data/attendance_store.json)
-  if (fs.existsSync(BUNDLED_DATA_FILE)) {
-    try {
-      const raw = fs.readFileSync(BUNDLED_DATA_FILE, 'utf-8');
-      inMemoryStore = JSON.parse(raw);
-      return inMemoryStore;
-    } catch (err) {
-      console.warn('[attendanceDb] Error reading bundled attendance store:', err.message);
+  const candidateBundledFiles = [BUNDLED_DATA_FILE, MODULE_DATA_FILE];
+  for (const candidate of candidateBundledFiles) {
+    if (fs.existsSync(candidate)) {
+      try {
+        const raw = fs.readFileSync(candidate, 'utf-8');
+        inMemoryStore = JSON.parse(raw);
+        return inMemoryStore;
+      } catch (err) {
+        console.warn(`[attendanceDb] Error reading attendance store from ${candidate}:`, err.message);
+      }
     }
   }
 

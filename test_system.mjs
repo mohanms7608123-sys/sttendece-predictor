@@ -254,8 +254,45 @@ async function runTests() {
   const hasMaskedPasswords = (studentsRaw.data?.students || []).every((s) => s.password === '****************');
   assert(hasMaskedPasswords, 'Passwords are never sent in plaintext and masked as ******** in account tables');
 
+  // 15. Base API and health check return valid JSON
+  const apiRootRes = await callApi('GET', '/api');
+  assert(apiRootRes.status === 200 && apiRootRes.data?.status === 'ok', 'API root returns valid JSON status');
+
+  const healthRes = await callApi('GET', '/api/health');
+  assert(healthRes.status === 200 && healthRes.data?.status === 'ok' && healthRes.data?.service, 'API health endpoint returns valid JSON metrics');
+
+  // 16. Missing API endpoints return valid JSON 404 (never HTML or plain text)
+  const notFoundRes = await callApi('GET', '/api/unknown-endpoint');
+  assert(notFoundRes.status === 404 && notFoundRes.data?.error === 'NotFound', 'Missing API route returns valid JSON with HTTP 404');
+
+  // 17. Vercel Serverless Function handler routes requests cleanly
+  const { default: vercelHandler } = await import('./api/index.js');
+  let vercelHandledData = null;
+  let vercelHandledStatus = 200;
+  const mockVercelReq = new EventEmitter();
+  mockVercelReq.method = 'GET';
+  mockVercelReq.url = '/api/index.js'; // Simulating Vercel internal rewrite
+  mockVercelReq.query = { path: ['attendance', 'super-admin', 'colleges'] };
+  mockVercelReq.headers = { authorization: `Bearer ${saToken}` };
+
+  const mockVercelRes = new EventEmitter();
+  mockVercelRes.statusCode = 200;
+  mockVercelRes.headers = {};
+  mockVercelRes.setHeader = (k, v) => { mockVercelRes.headers[k.toLowerCase()] = v; };
+  mockVercelRes.getHeader = (k) => mockVercelRes.headers[k.toLowerCase()];
+  mockVercelRes.status = (c) => { mockVercelRes.statusCode = c; return mockVercelRes; };
+  mockVercelRes.json = (d) => { vercelHandledData = d; };
+  mockVercelRes.send = (d) => { try { vercelHandledData = JSON.parse(d); } catch { vercelHandledData = d; } };
+  mockVercelRes.end = () => {};
+
+  await vercelHandler(mockVercelReq, mockVercelRes);
+  assert(
+    mockVercelRes.statusCode === 200 && Array.isArray(vercelHandledData?.colleges),
+    'Vercel Serverless handler normalizes rewritten path and returns colleges JSON'
+  );
+
   console.log(`\n====================================================`);
-  console.log(`   ALL 14/14 PRD TESTS PASSED SUCCESSFULLY!`);
+  console.log(`   ALL 18/18 PRD & DEPLOYMENT TESTS PASSED!`);
   console.log(`====================================================\n`);
   process.exit(0);
 }

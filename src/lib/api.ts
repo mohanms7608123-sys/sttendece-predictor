@@ -1,4 +1,12 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+function resolveBaseUrl(): string {
+  const raw = (import.meta.env.VITE_API_URL || '').trim().replace(/\/$/, '');
+  if (!raw) return '/api';
+  if (raw.endsWith('/api/attendance')) return raw.replace(/\/attendance$/, '');
+  if (raw.endsWith('/api')) return raw;
+  return `${raw}/api`;
+}
+
+const API_BASE_URL = resolveBaseUrl();
 
 export class ApiError extends Error {
   status: number;
@@ -31,27 +39,44 @@ async function request<T = any>(endpoint: string, options: RequestInit = {}): Pr
     headers,
   });
 
-  let data: any;
-  const contentType = response.headers.get('content-type');
-  if (contentType && contentType.includes('application/json')) {
-    data = await response.json();
-  } else {
-    data = await response.text();
+  const rawText = await response.text();
+  let data: any = null;
+  const contentType = response.headers.get('content-type') || '';
+  const looksLikeJson =
+    contentType.includes('application/json') ||
+    (rawText.trim().startsWith('{') && rawText.trim().endsWith('}')) ||
+    (rawText.trim().startsWith('[') && rawText.trim().endsWith(']'));
+
+  if (looksLikeJson) {
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      data = null;
+    }
   }
 
   if (!response.ok) {
-    if (typeof data === 'string' && (data.includes('<!DOCTYPE') || data.includes('<html'))) {
+    if (data && (data.error || data.message)) {
+      throw new ApiError(data.error || data.message, response.status, data);
+    }
+    if (
+      rawText.includes('<!DOCTYPE') ||
+      rawText.includes('<html') ||
+      rawText.includes('The page could not be found') ||
+      rawText.includes('NOT_FOUND')
+    ) {
       throw new ApiError(
-        'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend (e.g. https://your-backend.onrender.com) in Netlify Site Configuration.',
+        `Backend API service is unreachable (${response.status} ${response.statusText || 'Not Found'}). The server returned an HTML error page. Check your Vercel deployment rewrites or configure VITE_API_URL to point to your backend.`,
         response.status,
-        data
+        rawText
       );
     }
-    const errorMessage = (data && data.error) || response.statusText || 'Request failed';
-    throw new ApiError(errorMessage, response.status, data);
+    const cleanSnippet = rawText.replace(/<[^>]*>?/gm, '').trim().slice(0, 150);
+    const errorMessage = cleanSnippet || response.statusText || 'Request failed';
+    throw new ApiError(errorMessage, response.status, data || rawText);
   }
 
-  return data as T;
+  return (data !== null ? data : rawText) as T;
 }
 
 export const api = {

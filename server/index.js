@@ -72,7 +72,16 @@ app.use((req, res, next) => {
 const uploadPath = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(uploadPath));
 
-// Health check endpoint
+// Health check & status endpoints
+app.get(['/api', '/api/'], (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Smart Student Attendance and Predictor System',
+    message: 'Attendance Predictor API is operational',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get(['/api/health', '/health'], (req, res) => {
   const isMongo = getMongoConnectionStatus();
   res.json({
@@ -154,6 +163,29 @@ if (fs.existsSync(distPath)) {
     next();
   });
 }
+
+// 404 handler for unmatched /api routes - always return valid JSON
+app.use('/api', (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: 'NotFound',
+    message: `API endpoint '${req.method} ${req.originalUrl || req.url}' does not exist.`,
+  });
+});
+
+// Global API error handler - always return valid JSON with appropriate status code
+app.use((err, req, res, next) => {
+  console.error('[API Error]', err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  const statusCode = typeof err.statusCode === 'number' ? err.statusCode : typeof err.status === 'number' ? err.status : 500;
+  res.status(statusCode).json({
+    success: false,
+    error: err.name || 'InternalServerError',
+    message: err.message || 'An internal server error occurred while processing your request.',
+  });
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
