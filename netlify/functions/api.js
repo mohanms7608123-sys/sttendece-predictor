@@ -17,5 +17,17 @@ export const handler = async (event, context) => {
       console.warn('[Netlify Function] DB connect warning:', err.message);
     }
   }
-  return serverlessHandler(event, context);
+  try {
+    return await serverlessHandler(event, context);
+  } catch (err) {
+    console.error('[Netlify Function] Execution error:', err);
+    return {
+      statusCode: 500,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        success: false,
+        message: 'Internal function execution error: ' + (err.message || String(err)),
+      }),
+    };
+  }
 };

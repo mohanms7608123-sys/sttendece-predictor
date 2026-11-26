@@ -5,6 +5,10 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[functions]
+  included_files = ["server/data/**"]
+  node_bundler = "esbuild"
+
 # Route API requests to Netlify serverless function
 [[redirects]]
   from = "/api/*"

@@ -13,29 +13,46 @@ import {
   ActivityLogModel,
 } from '../models/attendanceModels.js';
 
-const DATA_DIR = path.join(process.cwd(), 'server', 'data');
-const DATA_FILE = path.join(DATA_DIR, 'attendance_store.json');
+const isServerless = !!(process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const BUNDLED_DATA_FILE = path.join(process.cwd(), 'server', 'data', 'attendance_store.json');
+const WRITABLE_DATA_DIR = isServerless ? '/tmp' : path.join(process.cwd(), 'server', 'data');
+const WRITABLE_DATA_FILE = path.join(WRITABLE_DATA_DIR, 'attendance_store.json');
 
 // Memory cache for embedded store
 let inMemoryStore = null;
 
 function ensureDataDirectory() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(WRITABLE_DATA_DIR)) {
+      fs.mkdirSync(WRITABLE_DATA_DIR, { recursive: true });
+    }
+  } catch (err) {
+    console.warn('[attendanceDb] Notice: Operating in read-only environment, using memory storage:', err.message);
   }
 }
 
 function loadEmbeddedData() {
-  ensureDataDirectory();
   if (inMemoryStore) return inMemoryStore;
 
-  if (fs.existsSync(DATA_FILE)) {
+  // 1. Try reading from writable file (e.g. /tmp/attendance_store.json on serverless)
+  if (fs.existsSync(WRITABLE_DATA_FILE)) {
     try {
-      const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+      const raw = fs.readFileSync(WRITABLE_DATA_FILE, 'utf-8');
       inMemoryStore = JSON.parse(raw);
       return inMemoryStore;
     } catch (err) {
-      console.error('Error reading attendance store, reinitializing:', err.message);
+      console.warn('[attendanceDb] Error reading writable attendance store:', err.message);
+    }
+  }
+
+  // 2. Try reading from bundled file (server/data/attendance_store.json)
+  if (fs.existsSync(BUNDLED_DATA_FILE)) {
+    try {
+      const raw = fs.readFileSync(BUNDLED_DATA_FILE, 'utf-8');
+      inMemoryStore = JSON.parse(raw);
+      return inMemoryStore;
+    } catch (err) {
+      console.warn('[attendanceDb] Error reading bundled attendance store:', err.message);
     }
   }
 
@@ -485,12 +502,12 @@ function loadEmbeddedData() {
 }
 
 function saveEmbeddedData() {
-  ensureDataDirectory();
   if (!inMemoryStore) return;
   try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(inMemoryStore, null, 2), 'utf-8');
+    ensureDataDirectory();
+    fs.writeFileSync(WRITABLE_DATA_FILE, JSON.stringify(inMemoryStore, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Error saving attendance store:', err.message);
+    console.warn('[attendanceDb] Notice: Storage is operating in-memory cache:', err.message);
   }
 }
 
