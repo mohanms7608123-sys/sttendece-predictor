@@ -1,5 +1,12 @@
-const rawApiUrl = import.meta.env.VITE_API_URL || '';
-const API_BASE = (rawApiUrl ? rawApiUrl.replace(/\/$/, '') : '') + '/api/attendance';
+function resolveApiBase(): string {
+  const raw = (import.meta.env.VITE_API_URL || '').trim().replace(/\/$/, '');
+  if (!raw) return '/api/attendance';
+  if (raw.endsWith('/api/attendance')) return raw;
+  if (raw.endsWith('/api')) return `${raw}/attendance`;
+  return `${raw}/api/attendance`;
+}
+
+const API_BASE = resolveApiBase();
 
 function getHeaders() {
   const token = localStorage.getItem('attendance_token');
@@ -15,9 +22,13 @@ function getHeaders() {
 async function handleResponse<T>(res: Response): Promise<T> {
   const contentType = res.headers.get('content-type') || '';
   if (!contentType.includes('application/json')) {
-    throw new Error(
-      'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend, or configure a proxy redirect.'
-    );
+    const text = await res.text();
+    if (text.includes('<!DOCTYPE') || text.includes('<html')) {
+      throw new Error(
+        'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend (e.g. https://your-backend.onrender.com) in Netlify Site Configuration.'
+      );
+    }
+    throw new Error(`Server returned non-JSON response (${res.status} ${res.statusText})`);
   }
   const data = await res.json();
   if (!res.ok) {

@@ -40,6 +40,13 @@ async function request<T = any>(endpoint: string, options: RequestInit = {}): Pr
   }
 
   if (!response.ok) {
+    if (typeof data === 'string' && (data.includes('<!DOCTYPE') || data.includes('<html'))) {
+      throw new ApiError(
+        'Backend API server is not connected. The host returned an HTML page instead of API data. If you deployed on Netlify, please configure VITE_API_URL pointing to your deployed backend (e.g. https://your-backend.onrender.com) in Netlify Site Configuration.',
+        response.status,
+        data
+      );
+    }
     const errorMessage = (data && data.error) || response.statusText || 'Request failed';
     throw new ApiError(errorMessage, response.status, data);
   }

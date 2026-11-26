@@ -6,7 +6,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
-import { connectDB } from './config/db.js';
+import { connectDB, getMongoConnectionStatus } from './config/db.js';
 import { initSocket } from './socket.js';
 import { authenticateToken, optionalAuth, requireRole } from './middleware/auth.js';
 
@@ -32,8 +32,25 @@ const server = http.createServer(app);
 // Initialize Socket.IO
 initSocket(server);
 
-// Middleware
-app.use(cors({ origin: '*' }));
+// Production-ready CORS handling for Netlify, Render, Vercel, and localhost
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return callback(null, true);
+    if (/^https:\/\/.*\.netlify\.app$/.test(origin)) return callback(null, true);
+    if (/^https:\/\/.*\.vercel\.app$/.test(origin)) return callback(null, true);
+    if (/^https:\/\/.*\.onrender\.com$/.test(origin)) return callback(null, true);
+    if (process.env.FRONTEND_URL && origin.replace(/\/$/, '') === process.env.FRONTEND_URL.replace(/\/$/, '')) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
@@ -49,12 +66,17 @@ app.use((req, res, next) => {
 const uploadPath = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(uploadPath));
 
-// Health check
-app.get('/api/health', (req, res) => {
+// Health check endpoint
+app.get(['/api/health', '/health'], (req, res) => {
+  const isMongo = getMongoConnectionStatus();
   res.json({
     status: 'ok',
+    service: 'Smart Student Attendance and Predictor System',
+    database: isMongo ? 'mongodb_connected' : 'embedded_store_active',
+    databaseStatus: isMongo ? 'MongoDB Atlas Cloud Online' : 'Embedded Persistent Store Active',
     timestamp: new Date().toISOString(),
-    service: 'Smart Attendance & Predictor API with MongoDB & Socket.IO',
+    uptime: Math.round(process.uptime()),
+    version: '1.0.0',
   });
 });
 
