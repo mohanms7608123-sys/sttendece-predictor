@@ -59,6 +59,9 @@ app.use((req, res, next) => {
   if (req.url.startsWith('/.netlify/functions/api')) {
     req.url = req.url.replace('/.netlify/functions/api', '/api');
   }
+  if (req.url.startsWith('/api/index.js')) {
+    req.url = req.url.replace('/api/index.js', '/api');
+  }
   if (!req.url.startsWith('/api') && !req.url.startsWith('/uploads') && !req.url.startsWith('/socket.io')) {
     req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
   }

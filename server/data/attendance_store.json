@@ -9,9 +9,9 @@
       "password": "$2b$10$aYrFH.iPDG6o7giCw785ZeVDzsSmVjfMgE1slYSWKovUi8sysavvC",
       "role": "super_admin",
       "status": "active",
-      "lastLogin": "2026-11-26T14:56:37.934Z",
+      "lastLogin": "2026-11-26T15:33:55.385Z",
       "registrationDate": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-11-26T14:56:37.935Z"
+      "updatedAt": "2026-11-26T15:33:55.386Z"
     }
   ],
   "colleges": [
@@ -63,9 +63,9 @@
       "collegeSecretCode": "APEX2026",
       "role": "college_admin",
       "status": "active",
-      "lastLogin": "2026-11-26T14:56:38.036Z",
+      "lastLogin": "2026-11-26T15:33:55.455Z",
       "registrationDate": "2026-01-12T00:00:00.000Z",
-      "updatedAt": "2026-11-26T14:56:38.036Z"
+      "updatedAt": "2026-11-26T15:33:55.455Z"
     },
     {
       "_id": "adm_02",
@@ -111,7 +111,7 @@
       "status": "active",
       "createdBy": "ADM-101",
       "createdAt": "2026-01-20T00:00:00.000Z",
-      "updatedAt": "2026-11-26T14:56:38.133Z"
+      "updatedAt": "2026-11-26T15:33:55.536Z"
     },
     {
       "_id": "sub_02",
@@ -200,9 +200,9 @@
       "collegeSecretCode": "APEX2026",
       "role": "student",
       "status": "active",
-      "lastLogin": "2026-11-26T14:56:38.123Z",
+      "lastLogin": "2026-11-26T15:33:55.528Z",
       "registrationDate": "2026-01-25T00:00:00.000Z",
-      "updatedAt": "2026-11-26T14:56:38.123Z"
+      "updatedAt": "2026-11-26T15:33:55.528Z"
     },
     {
       "_id": "stu_02",
@@ -266,9 +266,9 @@
       "collegeSecretCode": "MCA2026",
       "role": "student",
       "status": "active",
-      "lastLogin": "2026-11-25T21:31:00.187Z",
+      "lastLogin": "2026-11-26T15:14:55.317Z",
       "registrationDate": "2026-11-25T19:18:50.621Z",
-      "updatedAt": "2026-11-25T21:31:00.187Z"
+      "updatedAt": "2026-11-26T15:14:55.317Z"
     }
   ],
   "attendance": [
@@ -577,6 +577,23 @@
       "respondedAt": null,
       "respondedBy": "",
       "submissionDate": "2026-11-26T14:56:38.139Z"
+    },
+    {
+      "_id": "id_1795707235540_pkr5od",
+      "createdAt": "2026-11-26T15:33:55.540Z",
+      "complaintId": "CMP-6328",
+      "studentId": "STU-1001",
+      "studentName": "Alex Rivera",
+      "studentEmail": "alex@apex.edu",
+      "collegeId": "COL-101",
+      "collegeName": "Apex Institute of Technology",
+      "title": "Lab Attendance Missing In Semester",
+      "description": "Lab attendance for week 4 was not registered.",
+      "status": "Pending",
+      "adminResponse": "",
+      "respondedAt": null,
+      "respondedBy": "",
+      "submissionDate": "2026-11-26T15:33:55.540Z"
     }
   ],
   "activity_logs": [
@@ -1106,6 +1123,76 @@
         "title": "Lab Attendance Missing In Semester"
       },
       "timestamp": "2026-11-26T14:56:38.139Z"
+    },
+    {
+      "_id": "id_1795706095319_xeaku9",
+      "createdAt": "2026-11-26T15:14:55.319Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "mohanms7608123@gmail.com",
+      "role": "student",
+      "target": "STU-3649",
+      "collegeId": "1001",
+      "details": {},
+      "timestamp": "2026-11-26T15:14:55.319Z"
+    },
+    {
+      "_id": "id_1795707235387_t6ioha",
+      "createdAt": "2026-11-26T15:33:55.387Z",
+      "action": "SUPER_ADMIN_LOGIN",
+      "performedBy": "superadmin",
+      "role": "super_admin",
+      "target": "SA-001",
+      "collegeId": "",
+      "details": {},
+      "timestamp": "2026-11-26T15:33:55.387Z"
+    },
+    {
+      "_id": "id_1795707235456_9ablx8",
+      "createdAt": "2026-11-26T15:33:55.456Z",
+      "action": "COLLEGE_ADMIN_LOGIN",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "ADM-101",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-26T15:33:55.456Z"
+    },
+    {
+      "_id": "id_1795707235529_3t4mrg",
+      "createdAt": "2026-11-26T15:33:55.529Z",
+      "action": "STUDENT_LOGIN",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "STU-1001",
+      "collegeId": "COL-101",
+      "details": {},
+      "timestamp": "2026-11-26T15:33:55.529Z"
+    },
+    {
+      "_id": "id_1795707235536_t183cp",
+      "createdAt": "2026-11-26T15:33:55.536Z",
+      "action": "SUBJECT_UPDATED",
+      "performedBy": "admin@apex.edu",
+      "role": "college_admin",
+      "target": "Data Structures & Algorithms (CS-101)",
+      "collegeId": "COL-101",
+      "details": {
+        "classesConducted": 42
+      },
+      "timestamp": "2026-11-26T15:33:55.536Z"
+    },
+    {
+      "_id": "id_1795707235541_tjmeij",
+      "createdAt": "2026-11-26T15:33:55.541Z",
+      "action": "COMPLAINT_SUBMITTED",
+      "performedBy": "alex@apex.edu",
+      "role": "student",
+      "target": "CMP-6328",
+      "collegeId": "COL-101",
+      "details": {
+        "title": "Lab Attendance Missing In Semester"
+      },
+      "timestamp": "2026-11-26T15:33:55.541Z"
     }
   ]
 }
